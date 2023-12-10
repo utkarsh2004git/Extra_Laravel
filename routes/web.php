@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FormController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Customer;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,9 @@ Route::get('/', function () {
 
 Route::get('/form',[FormController::class,'index']);
 Route::post('/register',[FormController::class,'register']);
+
+Route::get('/customer', function () {
+    $customers=Customer::all();
+    echo "<pre>";
+    print_r($customers->toArray());
+});
