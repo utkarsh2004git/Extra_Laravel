@@ -22,6 +22,7 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Gender</th>
+                    <th>Address</th>
                     <th>DOB</th>
                     <th>State</th>
                     <th>Country</th>
@@ -39,6 +40,7 @@
                             @elseif($customer->gender=="O")Other
                             @endif
                         </td>
+                        <td>{{$customer->address}}</td>
                         <td>{{$customer->dob}}</td>
                         <td>{{$customer->state}}</td>
                         <td>{{$customer->country}}</td>
@@ -54,8 +56,10 @@
                         </td>
                         <td>
                             <a class="btn btn-danger" href="{{url('/customer/delete/')}}/{{$customer->customer_id}}">Delete</a>
+
                             {{-- <a class="btn btn-danger" href="{{route('customer.delete',['id'=>$customer->customer_id])}}/{{$customer->customer_id}}">Delete</a> --}}
-                            <a class="btn btn-primary" href="{{url('/customer/edit/')}}/{{$customer->customer_id}}">Edit</a>
+
+                            <a class="btn btn-primary" href="{{route('customer.edit',['id'=>$customer->customer_id])}}">Edit</a>
 
                         </td>
                     </tr>

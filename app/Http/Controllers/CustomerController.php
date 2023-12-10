@@ -8,7 +8,10 @@ use App\Models\Customer;
 class CustomerController extends Controller
 {
     public function index(){
-        return view('customer');
+       $title= "Customer Registration";
+       $url=url('customer/create');
+       $data=compact('title','url');
+        return view('customer')->with($data);
     }
     public function store(Request $req){
         // echo "<pre>";
@@ -41,6 +44,22 @@ class CustomerController extends Controller
         }
 
         return redirect('customer/view');
+
+    }
+    public function edit($id){
+        $customer=Customer::find($id);
+        if(is_null($customer)){
+            $url= url('customer/create')."/".$id;
+            $title="Customer Registration";
+            $data=compact('url','title');
+            return redirect('customer/view')->with($data);
+        }
+        else{
+            $url= url('/customer/update')."/".$id;  //.  is for concatinate
+            $title="Customer Updation";
+            $data=compact("customer","url",'title');
+            return view('customer')->with($data);
+        }
 
     }
 }

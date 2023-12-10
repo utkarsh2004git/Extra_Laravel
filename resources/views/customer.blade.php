@@ -8,9 +8,9 @@
 </head>
 <body>
       @include('layouts.header')
-<h1 class="displat-4 text-center">Register</h1>
+<h1 class="display-4 text-center">{{$title}}</h1>
 <div class="container mt-5">
-  <form action="{{url('/customer/create')}}" method="post"> 
+  <form action="{{$url}} " method="post"> 
     @csrf
     <div class="form-group">
       <label for="name">Name:</label>
