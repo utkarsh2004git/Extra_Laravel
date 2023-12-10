@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>Customer data</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -53,7 +53,10 @@
                             @endif
                         </td>
                         <td>
-                            <button class="btn btn-danger">Delete</button>
+                            <a class="btn btn-danger" href="{{url('/customer/delete/')}}/{{$customer->customer_id}}">Delete</a>
+                            {{-- <a class="btn btn-danger" href="{{route('customer.delete',['id'=>$customer->customer_id])}}/{{$customer->customer_id}}">Delete</a> --}}
+                            <a class="btn btn-primary" href="{{url('/customer/edit/')}}/{{$customer->customer_id}}">Edit</a>
+
                         </td>
                     </tr>
                 @endforeach

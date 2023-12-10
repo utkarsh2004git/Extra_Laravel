@@ -7,10 +7,10 @@
   <title>Registration Form</title>
 </head>
 <body>
-  @include('layouts.header')
+      @include('layouts.header')
 <h1 class="displat-4 text-center">Register</h1>
 <div class="container mt-5">
-  <form action="{{url('/')}}/customer" method="post"> 
+  <form action="{{url('/customer/create')}}" method="post"> 
     @csrf
     <div class="form-group">
       <label for="name">Name:</label>
@@ -41,7 +41,7 @@
       <label for="gender">Gender:</label>
       <select class="form-control" name="gender" id="gender" required>
         <option value="M" name="M">Male</option>
-        <option value="N" name="N">Female</option>
+        <option value="F" name="F">Female</option>
         <option value="O" name="O">Other</option>
       </select>
     </div>
