@@ -14,37 +14,12 @@
         @csrf
 
         <div class="container">
-            <h1>Registration</h1>
-            <div class="form-group">
-                <label for="">Name</label>
-                <input type="text" name="name" id="" class="form-control" placeholder="" aria-describedby="helpId" value="{{old('name')}}">
-                <span class="text-danger">
-                    @error('name')
-                    {{$message}}
-                @enderror
-                </span>
-                <!-- <small id="helpId" class="text-muted">Help text</small> -->
-            </div>
-            <div class="form-group">
-                <label for="">Email</label>
-                <input type="email" name="email" id="" class="form-control" placeholder="" aria-describedby="helpId" value="{{old('email')}}" >
-                <span class="text-danger">
-                    @error('email')
-                        {{$message}}
-                    @enderror
-                </span>
-                <!-- <small id="helpId" class="text-muted">Help text</small> -->
-            </div>
-            <div class="form-group">
-                <label for="">Password</label>
-                <input type="password" name="pass" id="" class="form-control" placeholder="" aria-describedby="helpId">
-                <span class="text-danger">
-                    @error('pass')
-                    {{$message}}
-                @enderror
-                </span>
-                <!-- <small id="helpId" class="text-muted">Help text</small> -->
-            </div>
+            <h1 class="text-center ">Registration</h1>
+            <x-input type="text" name='name' label="Name : " /> 
+            <x-input type="email" name='email' label="Email : " /> 
+            <x-input type="password" name='pass' label="Password : " /> 
+
+
             <button class="btn btn-primary">
                 Submit
             </button>
