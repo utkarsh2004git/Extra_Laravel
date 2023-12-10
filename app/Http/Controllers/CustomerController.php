@@ -8,9 +8,10 @@ use App\Models\Customer;
 class CustomerController extends Controller
 {
     public function index(){
-       $title= "Customer Registration";
+       $title= "Create Customer";
+       $customer=new Customer();     //since if there is no customer data in database to fetch for update we created new empty object
        $url=url('customer/create');
-       $data=compact('title','url');
+       $data=compact('title','url','customer');  //passing
         return view('customer')->with($data);
     }
     public function store(Request $req){
@@ -50,16 +51,28 @@ class CustomerController extends Controller
         $customer=Customer::find($id);
         if(is_null($customer)){
             $url= url('customer/create')."/".$id;
-            $title="Customer Registration";
+            $title="Create Customer";
             $data=compact('url','title');
             return redirect('customer/view')->with($data);
         }
         else{
             $url= url('/customer/update')."/".$id;  //.  is for concatinate
-            $title="Customer Updation";
+            $title="Update Customer";
             $data=compact("customer","url",'title');
             return view('customer')->with($data);
         }
 
+    }
+    public function update($id,Request $req){
+        $customer=Customer::find($id);
+        $customer->name=$req['name'];
+        $customer->email=$req['email'];
+        $customer->gender=$req['gender'];
+        $customer->address=$req['address'];
+        $customer->state=$req['state'];
+        $customer->country=$req['country'];
+        $customer->dob=$req['dob'];
+        $customer->save();
+        return redirect('/customer/view');
     }
 }
