@@ -33,7 +33,7 @@
 
     <div class="form-group">
       <label for="country">Country:</label>
-      <input type="text" class="form-control" name="coutry" id="country" placeholder="Enter your country" required>
+      <input type="text" class="form-control" name="country" id="country" placeholder="Enter your country" required>
     </div>
 
     <div class="form-group">

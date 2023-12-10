@@ -25,5 +25,12 @@ class CustomerController extends Controller
         $customer->country=$req['country'];
         $customer->dob=$req['dob'];
         $customer->save();
+        return redirect('/customer/view');
+    }
+    public function view(){
+        $customers=Customer::all();
+        // echo "<pre>";  
+        $data=compact('customers');
+         return view('customer-view')->with($data);
     }
 }

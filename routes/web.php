@@ -31,3 +31,4 @@ Route::post('/register',[FormController::class,'register']);
 
 Route::get('/customer',[CustomerController::class,'index']);
 Route::post('/customer',[CustomerController::class,'store']);
+Route::get('/customer/view',[CustomerController::class,'view']);
