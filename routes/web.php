@@ -17,7 +17,7 @@ use App\Models\Customer;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('/form',[FormController::class,'index']);
@@ -29,6 +29,6 @@ Route::post('/register',[FormController::class,'register']);
 //     print_r($customers->toArray());
 // });
 
-Route::get('/customer',[CustomerController::class,'index']);
-Route::post('/customer',[CustomerController::class,'store']);
+Route::get('/customer/create',[CustomerController::class,'index']);
+Route::post('/customer/create',[CustomerController::class,'store'])->name('customer.create');
 Route::get('/customer/view',[CustomerController::class,'view']);

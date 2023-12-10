@@ -10,6 +10,7 @@
 </head>
 
 <body>
+
     <form action="{{'/'}}register" method="post">
         @csrf
 

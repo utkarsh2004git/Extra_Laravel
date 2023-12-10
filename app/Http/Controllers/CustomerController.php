@@ -11,8 +11,8 @@ class CustomerController extends Controller
         return view('customer');
     }
     public function store(Request $req){
-        echo "<pre>";
-        print_r($req->all());
+        // echo "<pre>";
+        // print_r($req->all());
 
 
         $customer=new Customer;

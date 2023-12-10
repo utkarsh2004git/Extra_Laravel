@@ -7,7 +7,8 @@
   <title>Registration Form</title>
 </head>
 <body>
-
+  @include('layouts.header')
+<h1 class="displat-4 text-center">Register</h1>
 <div class="container mt-5">
   <form action="{{url('/')}}/customer" method="post"> 
     @csrf
@@ -54,11 +55,8 @@
       <input type="date" class="form-control" name="dob" id="dob" required>
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary text-center">Submit</button>
   </form>
 </div>
-
-
-
 </body>
 </html>
