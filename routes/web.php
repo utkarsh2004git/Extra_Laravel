@@ -30,5 +30,14 @@ Route::post('/register',[FormController::class,'register']);
 // });
 
 Route::get('/customer/create',[CustomerController::class,'index']);
-Route::post('/customer/create',[CustomerController::class,'store'])->name('customer.create');
+
+//view customers
 Route::get('/customer/view',[CustomerController::class,'view']);
+
+//add customer
+Route::post('/customer/create',[CustomerController::class,'store'])->name('customer.create');
+
+
+//delete customer
+Route::get('/customer/delete/{id}',[CustomerController::class,'delete'])->name('customer.delete');
+
