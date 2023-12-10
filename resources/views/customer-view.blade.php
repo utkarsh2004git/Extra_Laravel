@@ -26,6 +26,7 @@
                     <th>State</th>
                     <th>Country</th>
                     <th>Staus</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,11 +42,19 @@
                         <td>{{$customer->dob}}</td>
                         <td>{{$customer->state}}</td>
                         <td>{{$customer->country}}</td>
-                        <td>@if($customer->status=="1")Active
-                            @else Inactive
+                        <td>
+                            @if($customer->status=="1")
+                            
+                               <a href=""> <span class="badge badge-success">Active</span></a>
+
+                            @else 
+                            
+                                <a href=""><span class="badge badge-danger">Inactive</span></a>
                             @endif
                         </td>
-
+                        <td>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
