@@ -13,7 +13,7 @@
     @include('layouts.header')
 
     <div class="container">
-        <a href="">
+        <a href="{{route('customer.create')}}">
             <button type="button" name="" id="" class="btn btn-primary float-right">Add</button>
         </a>
         <table class="table">
