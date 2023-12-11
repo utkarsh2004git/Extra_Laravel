@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-      <title>Customer data</title>
+      <title>Customer Trash</title>
       <!-- Required meta tags -->
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,37 +12,9 @@
   </head>
   <body>
     @include('layouts.header')
-    <div align="center">
-        <div id="alert">
-            @if(session()->has('messagedeleted'))
-                <div class="alert alert-danger ">
-                    <button type="button" class="close" data-dismiss="alert">X</button>
-                    {{session()->get('messagedeleted')}}
-                </div>
-            @elseif(session()->has('messageupdated'))
-            <div class="alert alert-info " >
-                <button type="button" class="close" data-dismiss="alert">X</button>
-                {{session()->get('messageupdated')}}
-            </div>
-            @elseif(session()->has('messagecreated'))
-            <div class="alert alert-success ">
-                <button type="button" class="close" data-dismiss="alert">X</button>
-                {{session()->get('messagecreated')}}
-            </div>
-            @elseif(session()->has('messagerestored'))
-            <div class="alert alert-success ">
-                <button type="button" class="close" data-dismiss="alert">X</button>
-                {{session()->get('messagerestored')}}
-            </div>
-            @endif
-        </div>
-    </div>
     <div class="container">
-        <a href="{{route('customer.create')}}">
-            <button type="button" name="" id="" class="btn btn-primary float-right mx-2">Add</button>
-        </a>
-        <a href="{{route('customer.trash')}}">
-            <button type="button" name="" id="" class="btn btn-danger float-right">Trash</button>
+        <a href="{{url('customer/view')}}">
+            <button type="button" name="" id="" class="btn btn-primary float-right mx-2">Customers</button>
         </a>
         <table class="table">
             <thead>
@@ -87,11 +59,11 @@
                         <td>{{$customer->created_at->diffForHumans()}}</td>
                         <td>{{$customer->updated_at->diffForHumans()}}</td>
                         <td>
-                            <a class="btn btn-danger" href="{{url('/customer/delete/')}}/{{$customer->customer_id}}">Trash</a>
+                            <a class="btn btn-danger" href="{{url('/customer/forcedelete/')}}/{{$customer->customer_id}}" onclick="confirmation(event)">Delete</a>
 
                             {{-- <a class="btn btn-danger" href="{{route('customer.delete',['id'=>$customer->customer_id])}}/{{$customer->customer_id}}">Delete</a> --}}
 
-                            <a class="btn btn-primary" href="{{route('customer.edit',['id'=>$customer->customer_id])}}">Edit</a>
+                            <a class="btn btn-primary" href="{{url('/customer/restore/')}}/{{$customer->customer_id}}">Restore</a>
 
                         </td>
                     </tr>
@@ -104,25 +76,25 @@
 
         //Confirmation POP-UP
 
-        // function confirmation(ev){
-        //     ev.preventDefault();
-        //     let urlToRedirect = ev.currentTarget.getAttribute('href');
-        //     console.log(urlToRedirect);
-        //     swal({
-        //         title: "Are you sure to delete this",
-        //         text:"You won't be able to revert this process!",
-        //         icon:"error",
-        //         buttons :true,
-        //         dangerMode:true,
-        //     })
-        //     .then((willCancel)=>
-        //         {
-        //             if(willCancel){
-        //                 window.location.href=urlToRedirect;
-        //             }
-        //         }
-        //     )
-        // } 
+        function confirmation(ev){
+            ev.preventDefault();
+            let urlToRedirect = ev.currentTarget.getAttribute('href');
+            console.log(urlToRedirect);
+            swal({
+                title: "Are you sure to delete this",
+                text:"You won't be able to revert this process!",
+                icon:"error",
+                buttons :true,
+                dangerMode:true,
+            })
+            .then((willCancel)=>
+                {
+                    if(willCancel){
+                        window.location.href=urlToRedirect;
+                    }
+                }
+            )
+        } 
     </script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
