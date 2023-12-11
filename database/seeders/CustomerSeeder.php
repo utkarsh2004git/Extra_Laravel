@@ -19,17 +19,7 @@ class CustomerSeeder extends Seeder
         $customer->name=$faker->name;
         $customer->email=$faker->email;
         $customer->password=$faker->password;
-        $forgender=$faker->gender;
-        if($forgender=="Male"){
-            $customer->gender='M';
-        }
-        elseif($forgender=="Female"){
-            $customer->gender='F';
-        }
-        else{
-            $customer->gender='O';
-        }
-
+        $customer->gender=$faker->randomElement(['M', 'F',"O"]);
         $customer->address=$faker->address;
         $customer->state=$faker->state;
         $customer->country=$faker->country;
