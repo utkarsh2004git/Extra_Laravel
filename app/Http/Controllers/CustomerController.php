@@ -53,7 +53,7 @@ class CustomerController extends Controller
         if(!is_null($customer)){
             $customer->forcedelete();
         }
-        return redirect('customer/view')->with('messagedeleted',"User Deleted successfully!");
+        return redirect('customer/trash')->with('messagedeleted',"User Deleted successfully!");
 
     }
 
