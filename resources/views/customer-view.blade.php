@@ -1,11 +1,12 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Customer data</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+      <title>Customer data</title>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <!-- sweetAlert js -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
@@ -27,6 +28,8 @@
                     <th>State</th>
                     <th>Country</th>
                     <th>Staus</th>
+                    <th>Created At</th>
+                    <th>Created At</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -54,8 +57,10 @@
                                 <a href=""><span class="badge badge-danger">Inactive</span></a>
                             @endif
                         </td>
+                        <td>{{$customer->created_at->diffForHumans()}}</td>
+                        <td>{{$customer->updated_at->diffForHumans()}}</td>
                         <td>
-                            <a class="btn btn-danger" href="{{url('/customer/delete/')}}/{{$customer->customer_id}}">Delete</a>
+                            <a class="btn btn-danger" href="{{url('/customer/delete/')}}/{{$customer->customer_id}}" onclick="confirmation(event)">Delete</a>
 
                             {{-- <a class="btn btn-danger" href="{{route('customer.delete',['id'=>$customer->customer_id])}}/{{$customer->customer_id}}">Delete</a> --}}
 
@@ -67,5 +72,33 @@
             </tbody>
         </table>
     </div>
+
+    <script>
+
+        //Confirmation POP-UP
+
+        function confirmation(ev){
+            ev.preventDefault();
+            let urlToRedirect = ev.currentTarget.getAttribute('href');
+            console.log(urlToRedirect);
+            swal({
+                title: "Are you sure to delete this",
+                text:"You won't be able to revert this process!",
+                icon:"warning",
+                buttons :true,
+                dangerMode:true,
+            })
+            .then((willCancel)=>
+                {
+                    if(willCancel){
+                        window.location.href=urlToRedirect;
+                    }
+                }
+            )
+        }
+
+       
+    </script>
+
   </body>
 </html>

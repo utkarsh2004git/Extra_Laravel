@@ -40,6 +40,7 @@
     <div class="form-group">
       <label for="gender">Gender:</label>
       <select class="form-control" name="gender" id="gender"  required>
+        <option value="select" name="select" selected disabled>select</option>
         <option value="M" name="M" {{$customer->gender=="M"?"selected":""}}>Male</option>
         <option value="F" name="F" {{$customer->gender=="F"?"selected":""}}>Female</option>
         <option value="O" name="O" {{$customer->gender=="O"?"selected":""}}>Other</option>
