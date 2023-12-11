@@ -16,6 +16,7 @@
         <a href="{{url('customer/view')}}">
             <button type="button" name="" id="" class="btn btn-primary float-right mx-2">Customers</button>
         </a>
+        <a class="btn btn-danger" href="{{url('/customer/empty')}}" onclick="confirmation(event)">Empty</a>
         <table class="table">
             <thead>
                 <tr>

@@ -47,6 +47,9 @@ Route::get('/customer/delete/{id}',[CustomerController::class,'delete'])->name('
 //Force delete customer
 Route::get('/customer/forcedelete/{id}',[CustomerController::class,'forcedelete'])->name('customer.forceDelete');
 
+//Force delete all customer
+Route::get('/customer/empty',[CustomerController::class,'empty'])->name('customer.empty');
+
 //Restore customer
 Route::get('/customer/restore/{id}',[CustomerController::class,'restore'])->name('customer.restore');
 

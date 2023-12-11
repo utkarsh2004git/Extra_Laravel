@@ -18,8 +18,6 @@ class CustomerController extends Controller
     public function store(Request $req){
         // echo "<pre>";
         // print_r($req->all());
-
-        
         $customer=new Customer;
         $customer->name=$req['name'];
         $customer->email=$req['email'];
@@ -52,6 +50,17 @@ class CustomerController extends Controller
         $customer=Customer::withTrashed()->find($id);
         if(!is_null($customer)){
             $customer->forcedelete();
+        }
+        return redirect('customer/trash')->with('messagedeleted',"User Deleted successfully!");
+
+    }
+
+    public function empty(){
+        $customer=Customer::withTrashed()->get();
+        foreach ($customer as $value) {
+            if(!is_null($value)){
+                $value->forcedelete();
+          }
         }
         return redirect('customer/trash')->with('messagedeleted',"User Deleted successfully!");
 
