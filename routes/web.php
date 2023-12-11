@@ -34,6 +34,9 @@ Route::get('/customer/create',[CustomerController::class,'index']);
 //view customers
 Route::get('/customer/view',[CustomerController::class,'view']);
 
+//trash customers
+Route::get('/customer/trash',[CustomerController::class,'trashView'])->name('customer.trash');
+
 //add customer
 Route::post('/customer/create',[CustomerController::class,'store'])->name('customer.create');
 
@@ -41,10 +44,19 @@ Route::post('/customer/create',[CustomerController::class,'store'])->name('custo
 //delete customer
 Route::get('/customer/delete/{id}',[CustomerController::class,'delete'])->name('customer.delete');
 
+//Force delete customer
+Route::get('/customer/forcedelete/{id}',[CustomerController::class,'forcedelete'])->name('customer.forceDelete');
+
+//Restore customer
+Route::get('/customer/restore/{id}',[CustomerController::class,'restore'])->name('customer.restore');
+
 //edit customer
 Route::get('/customer/edit/{id}',[CustomerController::class,'edit'])->name('customer.edit');
 
 Route::post('/customer/update/{id}',[CustomerController::class,'update'])->name('customer.update');
+
+
+
 
 
 Route::get('get-all-session',function(){

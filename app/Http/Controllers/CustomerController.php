@@ -47,6 +47,24 @@ class CustomerController extends Controller
         return redirect('customer/view')->with('messagedeleted',"User Deleted successfully!");
 
     }
+
+    public function forcedelete($id){
+        $customer=Customer::withTrashed()->find($id);
+        if(!is_null($customer)){
+            $customer->forcedelete();
+        }
+        return redirect('customer/view')->with('messagedeleted',"User Deleted successfully!");
+
+    }
+
+    public function restore($id){
+        $customer=Customer::withTrashed()->find($id);
+        if(!is_null($customer)){
+            $customer->restore();
+        }
+        return redirect('customer/view')->with('messagerestored',"User restored successfully!");
+
+    }
     public function edit($id){
         $customer=Customer::find($id);
         if(is_null($customer)){
@@ -76,5 +94,14 @@ class CustomerController extends Controller
         $customer->dob=$req['dob'];
         $customer->save();
         return redirect('/customer/view')->with('messageupdated',"User updated successfully!");
+    }
+
+
+
+
+    public function trashView(){
+        $customers = Customer::onlyTrashed()->get(); 
+        $data=compact('customers');
+        return view('customer-trash')->with($data);
     }
 }
