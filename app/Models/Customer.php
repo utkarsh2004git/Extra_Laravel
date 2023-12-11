@@ -12,4 +12,14 @@ class Customer extends Model
     protected $table="customer";
     protected $primaryKey="customer_id";
 
+    //capitalized name and modify
+    public function setNameAttribute($value){
+        $this ->attributes['name']=ucwords($value);
+    }
+
+    //change date format while showing only
+    
+    public function getDobAttribute($value){
+        return date("d-M-Y",strtotime($value));
+    }
 }

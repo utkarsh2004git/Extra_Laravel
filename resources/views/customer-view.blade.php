@@ -84,7 +84,7 @@
             swal({
                 title: "Are you sure to delete this",
                 text:"You won't be able to revert this process!",
-                icon:"warning",
+                icon:"error",
                 buttons :true,
                 dangerMode:true,
             })
@@ -96,8 +96,7 @@
                 }
             )
         }
-        
-       
+
     </script>
 
   </body>

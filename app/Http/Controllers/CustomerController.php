@@ -19,7 +19,7 @@ class CustomerController extends Controller
         // echo "<pre>";
         // print_r($req->all());
 
-
+        
         $customer=new Customer;
         $customer->name=$req['name'];
         $customer->email=$req['email'];

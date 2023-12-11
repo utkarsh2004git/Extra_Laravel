@@ -77,12 +77,10 @@
       <input type="date" class="form-control" name="dob" id="dob" value="{{$customer->dob}}" required>
     </div>
 
-    <button type="submit" class="btn btn-primary text-center">{{$forbtn}}</button>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary text-center">{{$forbtn}}</button>
+    </div>
   </form>
-</div>
-
-<script>
-
-</script>
+</div>z
 </body>
 </html>
