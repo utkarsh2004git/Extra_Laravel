@@ -30,7 +30,7 @@ class CustomerController extends Controller
         $customer->country=$req['country'];
         $customer->dob=$req['dob'];
         $customer->save();
-        return redirect('/customer/view');
+        return redirect('/customer/view')->with('messagecreated',"User Created successfully!");
     }
     public function view(){
         $customers=Customer::all();
@@ -44,8 +44,7 @@ class CustomerController extends Controller
         if(!is_null($customer)){
             $customer->delete();
         }
-
-        return redirect('customer/view');
+        return redirect('customer/view')->with('messagedeleted',"User Deleted successfully!");
 
     }
     public function edit($id){
@@ -76,6 +75,6 @@ class CustomerController extends Controller
         $customer->country=$req['country'];
         $customer->dob=$req['dob'];
         $customer->save();
-        return redirect('/customer/view');
+        return redirect('/customer/view')->with('messageupdated',"User updated successfully!");
     }
 }

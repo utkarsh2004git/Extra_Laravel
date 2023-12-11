@@ -78,9 +78,9 @@
     </div>
 
     <div class="text-center">
-      <button type="submit" class="btn btn-primary text-center">{{$forbtn}}</button>
+      <button type="submit" class="btn btn-primary text-center" >{{$forbtn}}</button>
     </div>
   </form>
-</div>z
+</div>
 </body>
 </html>

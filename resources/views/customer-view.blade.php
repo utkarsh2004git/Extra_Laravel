@@ -12,7 +12,26 @@
   </head>
   <body>
     @include('layouts.header')
-
+    <div align="center">
+        <div id="alert">
+            @if(session()->has('messagedeleted'))
+                <div class="alert alert-danger ">
+                    <button type="button" class="close" data-dismiss="alert">X</button>
+                    {{session()->get('messagedeleted')}}
+                </div>
+            @elseif(session()->has('messageupdated'))
+            <div class="alert alert-info " >
+                <button type="button" class="close" data-dismiss="alert">X</button>
+                {{session()->get('messageupdated')}}
+            </div>
+            @elseif(session()->has('messagecreated'))
+            <div class="alert alert-success ">
+                <button type="button" class="close" data-dismiss="alert">X</button>
+                {{session()->get('messagecreated')}}
+            </div>
+            @endif
+        </div>
+    </div>
     <div class="container">
         <a href="{{route('customer.create')}}">
             <button type="button" name="" id="" class="btn btn-primary float-right">Add</button>
@@ -44,7 +63,7 @@
                             @endif
                         </td>
                         <td>{{$customer->address}}</td>
-                        <td>{{$customer->dob}}</td>
+                        <td>{{date("d-M-Y",strtotime($customer->dob))}}</td>
                         <td>{{$customer->state}}</td>
                         <td>{{$customer->country}}</td>
                         <td>
@@ -95,9 +114,22 @@
                     }
                 }
             )
-        }
-
+        } 
     </script>
 
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    {{-- script for automatic remove pop up alert --}}
+    <script>
+
+        $('document').ready(function()
+        {
+            setTimeout(function() {
+                $("div.alert").remove()
+            },2000);
+        });
+    </script>
   </body>
 </html>

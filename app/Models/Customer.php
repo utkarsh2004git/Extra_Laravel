@@ -20,7 +20,7 @@ class Customer extends Model
 
     //change date format while showing only
 
-    public function getDobAttribute($value){
-        return date("d-M-Y",strtotime($value));
-    }
+    // public function getDobAttribute($value){
+    //     return date("d-M-Y",strtotime($value));
+    // }
 }
