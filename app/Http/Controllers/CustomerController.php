@@ -11,7 +11,8 @@ class CustomerController extends Controller
        $title= "Create Customer";
        $customer=new Customer();     //since if there is no customer data in database to fetch for update we created new empty object
        $url=url('customer/create');
-       $data=compact('title','url','customer');  //passing
+       $forbtn="Submit";
+       $data=compact('title','url','customer','forbtn');  //passing
         return view('customer')->with($data);
     }
     public function store(Request $req){
@@ -52,13 +53,15 @@ class CustomerController extends Controller
         if(is_null($customer)){
             $url= url('customer/create')."/".$id;
             $title="Create Customer";
-            $data=compact('url','title');
+            $forbtn="Submit";
+            $data=compact('url','title','forbtn');
             return redirect('customer/view')->with($data);
         }
         else{
             $url= url('/customer/update')."/".$id;  //.  is for concatinate
             $title="Update Customer";
-            $data=compact("customer","url",'title');
+            $forbtn="Update";
+            $data=compact("customer","url",'title','forbtn');
             return view('customer')->with($data);
         }
 
