@@ -4,7 +4,7 @@ use App\Http\Controllers\FormController;
 use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Customer;
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,4 +46,26 @@ Route::get('/customer/edit/{id}',[CustomerController::class,'edit'])->name('cust
 
 Route::post('/customer/update/{id}',[CustomerController::class,'update'])->name('customer.update');
 
+
+Route::get('get-all-session',function(){
+    $session = session()->all();
+    echo '<pre>';
+    print_r($session);
+});
+
+Route::get('set-session',function(Request $req){
+    $req->session()->put("name","DemoName");
+    $req->session()->put("id","DemoID");
+    // $req->session()->flash("session","success");
+    
+    return redirect('get-all-session');
+
+});
+
+Route::get('destroy-session',function(){
+    session()->forget("name","DemoName");
+    session()->forget("id","DemoID");
+    return redirect('get-all-session');
+
+});
 

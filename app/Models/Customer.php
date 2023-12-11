@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Customer extends Model
 {
@@ -18,7 +19,7 @@ class Customer extends Model
     }
 
     //change date format while showing only
-    
+
     public function getDobAttribute($value){
         return date("d-M-Y",strtotime($value));
     }
